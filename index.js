@@ -15,6 +15,7 @@ app.use(function(req,res,next){
 });
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
 /**
  * @Route /api/v1/ftcheck/handshakeID/tokenID/connectorToken
  * Check Connection JWT
