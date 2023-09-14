@@ -152,7 +152,7 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
             }
           };
           const response = await axios.post(
-            `http://localhost/backend/API/Signup.php`,
+            `http://localhost/backend/API/CreateUnit.php`,
             JSON.stringify({ 
               URD: EncData, 
               XFRC: connectorToken }),
