@@ -137,19 +137,14 @@ app.get('/api/v1/shKey/:token/:ctoken', async (req,res)=>{
  * @Route /api/v1/signup/JWTToken/ConnectorToken
  * Create SharedKey -ENCRYPTION FORMAT PKCS1
  */
-app.post('/api/v1/signup/:token/:ctoken', async (req,res)=>{
+app.post('/api/v1/signup/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
   const connectorTokenft = req.params.ctoken;
-  const connectorToken = req.params.token;
-  let data = req.body;
-  console.log(connectorTokenft+'\n');
-  console.log(connectorToken+'\n');
-  console.log(data);
-  res.status(500).json({error:'Internal Server Error'});
-  /*
+  
   if(lib.checkConnectionHeader(connectorTokenft)==true){
+    const EncData = req.body;
+    //console.log(EncData);
       try{
-          const shkey = req.params.token;
           const connectorToken=lib.getConnectionHeader();
           const customConfig = {
             headers: {
@@ -157,18 +152,18 @@ app.post('/api/v1/signup/:token/:ctoken', async (req,res)=>{
             }
           };
           const response = await axios.post(
-            `http://localhost/backend/API/CreateShKey.php`,
+            `http://localhost/backend/API/Signup.php`,
             JSON.stringify({ 
-              PubToken: shkey, 
+              URD: EncData, 
               XFRC: connectorToken }),
             customConfig);
             //QUERY SUCCESSFUL
           if(response.status==200){
           const d = response.data; 
-          console.log(response.status);  
-            (lib.checkConnectionHeader(d[0].XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'}); 
+          console.log(response.data);  
+            //(lib.checkConnectionHeader(d[0].XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'}); 
           }else{
-            res.status(500).json({error:'Internal Server Error'});
+            //res.status(500).json({error:'Internal Server Error'});
           }
       }catch(error){
           res.status(500).json({error:'Internal Server Error'});
@@ -176,7 +171,7 @@ app.post('/api/v1/signup/:token/:ctoken', async (req,res)=>{
   }else{
       res.status(500).json({error:'Internal Server Error'});
   }
-   */
+   
   
 })
 
