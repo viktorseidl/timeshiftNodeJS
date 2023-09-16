@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const app = express();
 const lib = require('./src/Utils/connectorHeader');
-
+const Domaine="http://localhost"
 /**
  * USE REDIRECT
  */
@@ -34,7 +34,7 @@ app.get('/api/v1/ftcheck/:handshake/:token/:ctoken', async (req,res)=>{
             })            
           };
           const response = await axios.post(
-            `http://localhost/backend/API/CheckJWT.php`,
+            `${Domaine}/backend/API/CheckJWT.php`,
             JSON.stringify({ 
               HANDSHAKE: handshake, 
               JWTToken: jwttoken, 
@@ -73,7 +73,7 @@ app.get('/api/v1/ftcreate/:token/:ctoken', async (req,res)=>{
             }
           };
           const response = await axios.post(
-            `http://localhost/backend/API/CreateJWT.php`,
+            `${Domaine}/backend/API/CreateJWT.php`,
             JSON.stringify({ 
               JWTToken: jwttoken, 
               XFRC: connectorToken }),
@@ -111,7 +111,7 @@ app.get('/api/v1/shKey/:token/:ctoken', async (req,res)=>{
             }
           };
           const response = await axios.post(
-            `http://localhost/backend/API/CreateShKey.php`,
+            `${Domaine}/backend/API/CreateShKey.php`,
             JSON.stringify({ 
               PubToken: shkey, 
               XFRC: connectorToken }),
@@ -152,7 +152,7 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
             }
           };
           const response = await axios.post(
-            `http://localhost/backend/API/CreateUnit.php`,
+            `${Domaine}/backend/API/CreateUnit.php`,
             JSON.stringify({ 
               URD: EncData, 
               XFRC: connectorToken }),
