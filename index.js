@@ -134,8 +134,8 @@ app.get('/api/v1/shKey/:token/:ctoken', async (req,res)=>{
 })
 
 /**
- * @Route /api/v1/signup/JWTToken/ConnectorToken
- * Create SharedKey -ENCRYPTION FORMAT PKCS1
+ * @Route /api/v1/signup/ConnectorToken
+ * Create new Unit registration
  */
 app.post('/api/v1/signup/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
@@ -159,11 +159,48 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
             customConfig);
             //QUERY SUCCESSFUL
           if(response.status==200){
-          const d = response.data; 
-          console.log(response.data);  
-            //(lib.checkConnectionHeader(d[0].XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'}); 
+          const d = JSON.parse(response.data); 
+          console.log(d);  
+            (lib.checkConnectionHeader(d.XFRC))? res.send(JSON.stringify(d)): res.status(500).json({error:'Internal Server Error'}); 
           }else{
-            //res.status(500).json({error:'Internal Server Error'});
+            res.status(500).json({error:'Internal Server Error'});
+          }
+      }catch(error){
+          res.status(500).json({error:'Internal Server Error'});
+      }
+  }else{
+      res.status(500).json({error:'Internal Server Error'});
+  }  
+})
+
+/**
+ * @Route /api/v1/activate/tokenID/connectorToken
+ * Activate Unit Account
+ */
+app.get('/api/v1/activateunit/:token/:ctoken', async (req,res)=>{
+  //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+  const connectorTokenft = req.params.ctoken;
+  if(lib.checkConnectionHeader(connectorTokenft)==true){
+      try{
+          const activateHash = req.params.token;      
+          const connectorToken=lib.getConnectionHeader();
+          const customConfig = {
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })            
+          };
+          const response = await axios.post(
+            `${Domaine}/backend/API/ActivateUnit.php`,
+            JSON.stringify({ 
+              AToken: activateHash, 
+              XFRC: connectorToken }),
+            customConfig);
+          //QUERY SUCCESSFUL
+          if(response.status==200){
+            const d = response.data;
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+          }else{
+            res.status(500).json({error:'Internal Server Error'});
           }
       }catch(error){
           res.status(500).json({error:'Internal Server Error'});
@@ -172,7 +209,6 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
       res.status(500).json({error:'Internal Server Error'});
   }
    
-  
 })
 
 const PORT = 3000;
