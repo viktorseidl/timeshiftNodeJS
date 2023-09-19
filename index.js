@@ -154,14 +154,15 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
           const response = await axios.post(
             `${Domaine}/backend/API/CreateUnit.php`,
             JSON.stringify({ 
-              URD: EncData, 
+              URD: EncData.URD, 
               XFRC: connectorToken }),
             customConfig);
             //QUERY SUCCESSFUL
+            //console.log(response.data);
           if(response.status==200){
           const d = JSON.parse(response.data); 
-          console.log(d);
-          console.log(d);  
+          
+          //console.log(d);  
             (lib.checkConnectionHeader(d.XFRC))? res.send(JSON.stringify(d)): res.status(500).json({error:'Internal Server Error'}); 
           }else{
             res.status(500).json({error:'Internal Server Error'});
@@ -178,14 +179,54 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
  * @Route /api/v1/activate/tokenID/connectorToken
  * Activate Root Account
  */
+app.get('/api/v1/activateunit/:token/:typ/:ctoken', async (req,res)=>{
+  //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+  const connectorTokenft = req.params.ctoken;
+  const T = req.params.typ;
+  if(lib.checkConnectionHeader(connectorTokenft)==true){
+          
+      try{
+          const activateHash = req.params.token;      
+          const connectorToken=lib.getConnectionHeader();
+          const customConfig = {
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })            
+          };
+          const response = await axios.post(
+            `${Domaine}/backend/API/ActivateUnit.php`,
+            JSON.stringify({ 
+              AToken: activateHash, 
+              T:T,
+              XFRC: connectorToken }),
+            customConfig);
+          //QUERY SUCCESSFUL
+          if(response.status==200){
+            const d = response.data;
+             
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+          }else{
+            res.status(500).json({error:'Internal Server Error'});
+          }
+      }catch(error){
+          res.status(500).json({error:'Internal Server Error'});
+      }
+  }else{
+      res.status(500).json({error:'Internal Server Error'});
+  }
+});
+/**
+ * @Route /api/v1/activate/tokenID/connectorToken
+ * Activate Root Account
+ */
 app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
   const connectorTokenft = req.params.ctoken;
   const T = req.params.typ;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
     const EncData = req.body;
-    console.log(EncData.E);
-      /*try{
+     
+      try{
           const activateHash = req.params.token;      
           const connectorToken=lib.getConnectionHeader();
           const customConfig = {
@@ -198,7 +239,7 @@ app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
             JSON.stringify({ 
               AToken: activateHash, 
               T:T,
-              P:EncData,
+              P:EncData.E,
               XFRC: connectorToken }),
             customConfig);
           //QUERY SUCCESSFUL
@@ -211,12 +252,12 @@ app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
           }
       }catch(error){
           res.status(500).json({error:'Internal Server Error'});
-      }*/
+      }
   }else{
       res.status(500).json({error:'Internal Server Error'});
   }
    
-})
+});
 
 const PORT = 3000;
 app.listen(PORT, () => {
