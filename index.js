@@ -160,6 +160,7 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
             //QUERY SUCCESSFUL
           if(response.status==200){
           const d = JSON.parse(response.data); 
+          console.log(d);
           console.log(d);  
             (lib.checkConnectionHeader(d.XFRC))? res.send(JSON.stringify(d)): res.status(500).json({error:'Internal Server Error'}); 
           }else{
@@ -175,13 +176,16 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
 
 /**
  * @Route /api/v1/activate/tokenID/connectorToken
- * Activate Unit Account
+ * Activate Root Account
  */
-app.get('/api/v1/activateunit/:token/:ctoken', async (req,res)=>{
+app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
   const connectorTokenft = req.params.ctoken;
+  const T = req.params.typ;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
-      try{
+    const EncData = req.body;
+    console.log(EncData.E);
+      /*try{
           const activateHash = req.params.token;      
           const connectorToken=lib.getConnectionHeader();
           const customConfig = {
@@ -190,21 +194,24 @@ app.get('/api/v1/activateunit/:token/:ctoken', async (req,res)=>{
             })            
           };
           const response = await axios.post(
-            `${Domaine}/backend/API/ActivateUnit.php`,
+            `${Domaine}/backend/API/ActivateRootPass.php`,
             JSON.stringify({ 
               AToken: activateHash, 
+              T:T,
+              P:EncData,
               XFRC: connectorToken }),
             customConfig);
           //QUERY SUCCESSFUL
           if(response.status==200){
             const d = response.data;
-            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+            console.log(d);
+            //(lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
           }else{
             res.status(500).json({error:'Internal Server Error'});
           }
       }catch(error){
           res.status(500).json({error:'Internal Server Error'});
-      }
+      }*/
   }else{
       res.status(500).json({error:'Internal Server Error'});
   }
