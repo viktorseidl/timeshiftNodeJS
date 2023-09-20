@@ -118,8 +118,7 @@ app.get('/api/v1/shKey/:token/:ctoken', async (req,res)=>{
             customConfig);
             //QUERY SUCCESSFUL
           if(response.status==200){
-          const d = response.data; 
-          console.log(response.status);  
+          const d = response.data;   
             (lib.checkConnectionHeader(d[0].XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'}); 
           }else{
             res.status(500).json({error:'Internal Server Error'});
@@ -143,7 +142,6 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
   
   if(lib.checkConnectionHeader(connectorTokenft)==true){
     const EncData = req.body;
-    //console.log(EncData);
       try{
           const connectorToken=lib.getConnectionHeader();
           const customConfig = {
@@ -158,11 +156,8 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
               XFRC: connectorToken }),
             customConfig);
             //QUERY SUCCESSFUL
-            //console.log(response.data);
           if(response.status==200){
           const d = JSON.parse(response.data); 
-          
-          //console.log(d);  
             (lib.checkConnectionHeader(d.XFRC))? res.send(JSON.stringify(d)): res.status(500).json({error:'Internal Server Error'}); 
           }else{
             res.status(500).json({error:'Internal Server Error'});
@@ -176,8 +171,8 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
 })
 
 /**
- * @Route /api/v1/activate/tokenID/connectorToken
- * Activate Root Account
+ * @Route /api/v1/activateunit/tokenID/connectorToken
+ * Activate Unit
  */
 app.get('/api/v1/activateunit/:token/:typ/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
@@ -203,7 +198,6 @@ app.get('/api/v1/activateunit/:token/:typ/:ctoken', async (req,res)=>{
           //QUERY SUCCESSFUL
           if(response.status==200){
             const d = response.data;
-             
             (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
           }else{
             res.status(500).json({error:'Internal Server Error'});
@@ -222,11 +216,10 @@ app.get('/api/v1/activateunit/:token/:typ/:ctoken', async (req,res)=>{
 app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
   const connectorTokenft = req.params.ctoken;
-  const T = req.params.typ;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
-    const EncData = req.body;
-     
-      try{
+    const EncData = req.body;    
+    try{
+          const T = req.params.typ;
           const activateHash = req.params.token;      
           const connectorToken=lib.getConnectionHeader();
           const customConfig = {
@@ -239,14 +232,14 @@ app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
             JSON.stringify({ 
               AToken: activateHash, 
               T:T,
-              P:EncData.E,
+              E:EncData.E,
               XFRC: connectorToken }),
             customConfig);
           //QUERY SUCCESSFUL
+          console.log(response.data)
           if(response.status==200){
             const d = response.data;
-            console.log(d);
-            //(lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
           }else{
             res.status(500).json({error:'Internal Server Error'});
           }
