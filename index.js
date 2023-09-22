@@ -156,6 +156,7 @@ app.post('/api/v1/signup/:ctoken', async (req,res)=>{
               XFRC: connectorToken }),
             customConfig);
             //QUERY SUCCESSFUL
+             
           if(response.status==200){
           const d = JSON.parse(response.data); 
             (lib.checkConnectionHeader(d.XFRC))? res.send(JSON.stringify(d)): res.status(500).json({error:'Internal Server Error'}); 
@@ -195,6 +196,7 @@ app.get('/api/v1/activateunit/:token/:typ/:ctoken', async (req,res)=>{
               T:T,
               XFRC: connectorToken }),
             customConfig);
+             
           //QUERY SUCCESSFUL
           if(response.status==200){
             const d = response.data;
@@ -239,7 +241,11 @@ app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
           console.log(response.data)
           if(response.status==200){
             const d = response.data;
-            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+            if(d.D){
+              (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+            }else{
+              (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+            }
           }else{
             res.status(500).json({error:'Internal Server Error'});
           }
