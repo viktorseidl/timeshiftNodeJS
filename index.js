@@ -213,7 +213,7 @@ app.get('/api/v1/activateunit/:token/:typ/:ctoken', async (req,res)=>{
 });
 /**
  * @Route /api/v1/activate/tokenID/connectorToken
- * Activate Root Account
+ * Activate Root Account and Install dependencies in DB
  */
 app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
@@ -246,6 +246,88 @@ app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
             }else{
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }
+          }else{
+            res.status(500).json({error:'Internal Server Error'});
+          }
+      }catch(error){
+          res.status(500).json({error:'Internal Server Error'});
+      }
+  }else{
+      res.status(500).json({error:'Internal Server Error'});
+  }
+   
+});
+
+/**
+ * @Route /api/v1/cryptlh/connectorToken
+ * Check LH and get Unit-Data 
+ */
+app.post('/api/v1/cryptlh/:ctoken', async (req,res)=>{
+  //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+  const connectorTokenft = req.params.ctoken;
+  if(lib.checkConnectionHeader(connectorTokenft)==true){
+    const EncData = req.body;    
+    try{
+          const connectorToken=lib.getConnectionHeader();
+          const customConfig = {
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })            
+          };
+          const response = await axios.post(
+            `${Domaine}/backend/API/CheckLH.php`,
+            JSON.stringify({ 
+              E:EncData.E,
+              XFRC: connectorToken }),
+            customConfig);
+          //QUERY SUCCESSFUL
+          if(response.status==200){
+            const d = response.data;
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+          }else{
+            res.status(500).json({error:'Internal Server Error'});
+          }
+      }catch(error){
+          res.status(500).json({error:'Internal Server Error'});
+      }
+  }else{
+      res.status(500).json({error:'Internal Server Error'});
+  }
+   
+});
+
+/**
+ * @Route /api/v1/cryptlh/connectorToken
+ * Login of Unit Panels 
+ */
+app.post('/api/v1/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
+  //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+  const connectorTokenft = req.params.ctoken;
+  if(lib.checkConnectionHeader(connectorTokenft)==true){
+    const EncData = req.body; 
+    console.log(EncData)   
+    try{
+        	const unitapi = req.params.uapi;
+          console.log(unitapi) 
+        	const linkhash = req.params.ltoken;
+          console.log(linkhash) 
+          const connectorToken=lib.getConnectionHeader();
+          const customConfig = {
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })            
+          };
+          const response = await axios.post(
+            `${Domaine}/backend/API/ucontroller/ULogin.php`,
+            JSON.stringify({ 
+              E:EncData.E,
+              XFRC: connectorToken }),
+            customConfig);
+          //QUERY SUCCESSFUL
+          console.log(response.data) 
+          if(response.status==200){
+            const d = response.data;
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
           }else{
             res.status(500).json({error:'Internal Server Error'});
           }
