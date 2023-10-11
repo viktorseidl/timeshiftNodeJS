@@ -304,9 +304,48 @@ app.post('/api/v1/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
   const connectorTokenft = req.params.ctoken;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
+    const EncData = req.body;         
+    try{            
+          const connectorToken=lib.getConnectionHeader();
+          const customConfig = {
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })            
+          };
+          const response = await axios.post(
+            `${Domaine}/backend/API/ucontroller/ULogin.php`,
+            JSON.stringify({ 
+              E:EncData.E,
+              XFRC: connectorToken }),
+            customConfig);
+           
+          if(response.status==200){
+            const d = response.data;
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+          }else{
+            res.status(500).json({error:'Internal Server Error'});
+          }
+      }catch(error){
+          res.status(500).json({error:'Internal Server Error'});
+      }
+  }else{
+      res.status(500).json({error:'Internal Server Error'});
+  }
+   
+});
+
+/**
+ * @Route /api/v1/standort/connectorToken
+ * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
+ */
+app.post('/api/v1/ucontrol/apanel/:typ/:uapi/:ltoken/:ctoken', async (req,res)=>{
+  //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+  const connectorTokenft = req.params.ctoken;
+  if(lib.checkConnectionHeader(connectorTokenft)==true){
     const EncData = req.body; 
     console.log(EncData)   
     try{
+        	const querytype = req.params.typ;
         	const unitapi = req.params.uapi;
           console.log(unitapi) 
         	const linkhash = req.params.ltoken;
@@ -318,8 +357,9 @@ app.post('/api/v1/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
             })            
           };
           const response = await axios.post(
-            `${Domaine}/backend/API/ucontroller/ULogin.php`,
+            `${Domaine}/backend/API/ucontroller/adminpanel/UAdmin.php`,
             JSON.stringify({ 
+              T:querytype,
               E:EncData.E,
               XFRC: connectorToken }),
             customConfig);
