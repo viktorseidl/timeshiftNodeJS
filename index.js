@@ -338,7 +338,7 @@ app.post('/api/v1/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
  * @Route /api/v1/standort/connectorToken
  * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
  */
-app.post('/api/v1/ucontrol/apanel/:typ/:uapi/:ltoken/:ctoken', async (req,res)=>{
+app.post('/api/v1/ucontrol/apanel/standorte/:typ/:ctoken', async (req,res)=>{
   //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
   const connectorTokenft = req.params.ctoken;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
@@ -346,20 +346,59 @@ app.post('/api/v1/ucontrol/apanel/:typ/:uapi/:ltoken/:ctoken', async (req,res)=>
     console.log(EncData)   
     try{
         	const querytype = req.params.typ;
-        	const unitapi = req.params.uapi;
-          console.log(unitapi) 
-        	const linkhash = req.params.ltoken;
-          console.log(linkhash) 
-          const connectorToken=lib.getConnectionHeader();
+        	const connectorToken=lib.getConnectionHeader();
           const customConfig = {
             headers: new Headers({
             'Content-Type': 'application/json',
             })            
           };
           const response = await axios.post(
-            `${Domaine}/backend/API/ucontroller/adminpanel/UAdmin.php`,
+            `${Domaine}/backend/API/ucontroller/adminpanel/UAdminStandorte.php`,
             JSON.stringify({ 
               T:querytype,
+              E:EncData.E,
+              XFRC: connectorToken }),
+            customConfig);
+          //QUERY SUCCESSFUL
+          console.log(response.data) 
+          if(response.status==200){
+            const d = response.data;
+            (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+          }else{
+            res.status(500).json({error:'Internal Server Error'});
+          }
+      }catch(error){
+          res.status(500).json({error:'Internal Server Error'});
+      }
+  }else{
+      res.status(500).json({error:'Internal Server Error'});
+  }
+   
+});
+/**
+ * @Route /api/v1/standort/connectorToken
+ * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
+ */
+app.post('/api/v1/ucontrol/apanel/standorte/:typ/:stid/:ctoken', async (req,res)=>{
+  //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+  const connectorTokenft = req.params.ctoken;
+  if(lib.checkConnectionHeader(connectorTokenft)==true){
+    const EncData = req.body; 
+    console.log(EncData)   
+    try{
+        	const querytype = req.params.typ;
+        	const stid = req.params.stid;
+        	const connectorToken=lib.getConnectionHeader();
+          const customConfig = {
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })            
+          };
+          const response = await axios.post(
+            `${Domaine}/backend/API/ucontroller/adminpanel/UAdminStandorte.php`,
+            JSON.stringify({ 
+              T:querytype,
+              StID:stid,
               E:EncData.E,
               XFRC: connectorToken }),
             customConfig);
