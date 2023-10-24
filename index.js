@@ -238,7 +238,7 @@ app.post('/api/v1/activateroot/:token/:typ/:ctoken', async (req,res)=>{
               XFRC: connectorToken }),
             customConfig);
           //QUERY SUCCESSFUL
-          console.log(response.data)
+          //console.log(response.data)
           if(response.status==200){
             const d = response.data;
             if(d.D){
@@ -343,7 +343,7 @@ app.post('/api/v1/ucontrol/apanel/standorte/:typ/:ctoken', async (req,res)=>{
   const connectorTokenft = req.params.ctoken;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
     const EncData = req.body; 
-    console.log(EncData)   
+    //console.log(EncData)   
     try{
         	const querytype = req.params.typ;
         	const connectorToken=lib.getConnectionHeader();
@@ -360,7 +360,7 @@ app.post('/api/v1/ucontrol/apanel/standorte/:typ/:ctoken', async (req,res)=>{
               XFRC: connectorToken }),
             customConfig);
           //QUERY SUCCESSFUL
-          console.log(response.data) 
+          //console.log(response.data) 
           if(response.status==200){
             const d = response.data;
             (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
@@ -384,7 +384,7 @@ app.post('/api/v1/ucontrol/apanel/standorte/:typ/:stid/:ctoken', async (req,res)
   const connectorTokenft = req.params.ctoken;
   if(lib.checkConnectionHeader(connectorTokenft)==true){
     const EncData = req.body; 
-    console.log(EncData)   
+    //console.log(EncData)   
     try{
         	const querytype = req.params.typ;
         	const stid = req.params.stid;
