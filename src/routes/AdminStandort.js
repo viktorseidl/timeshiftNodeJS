@@ -53,7 +53,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
         res.status(500).json({error:'Internal Server Error'});
     }
      
-  });
+  }); 
   /**
    * @Route /api/v1/standort/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
@@ -63,7 +63,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
       const EncData = req.body; 
-      //console.log(EncData)   
+      console.log(EncData.E)   
       try{
               const querytype = req.params.typ;
               const stid = req.params.stid;
@@ -99,5 +99,6 @@ router.post('/:typ/:ctoken', async (req,res)=>{
     }
      
   });
+  
   
   module.exports = router;
