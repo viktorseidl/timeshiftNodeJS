@@ -63,7 +63,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
       const EncData = req.body; 
-      console.log(EncData.E)   
+      console.log(EncData.F)   
       try{
               const querytype = req.params.typ;
               const stid = req.params.stid;
