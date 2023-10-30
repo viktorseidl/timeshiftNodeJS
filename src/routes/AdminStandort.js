@@ -1,5 +1,6 @@
 const express=require('express');
 const router = express.Router();
+const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
@@ -79,6 +80,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
                 T:querytype,
                 StID:stid,
                 E:EncData.E,
+                I:IP.address()?IP.address():req.header('x-forwarded-for')?req.header('x-forwarded-for'):req.socket.remoteAddress,//req.socket.remoteAddress,
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
