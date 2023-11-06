@@ -7,7 +7,7 @@ const lib = require('./src/Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 const PORT = 3000;
 app.use(cors({
-  origin:"*",
+  origin:"https://itsnando.com",
 }))
 /**
  * IMPORT ROUTES
