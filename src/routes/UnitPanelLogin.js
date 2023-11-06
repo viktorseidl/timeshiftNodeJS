@@ -77,7 +77,7 @@ router.post('/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
                 XFRC: connectorToken }),
               customConfig);
             //QUERY SUCCESSFUL
-            res.send(response.data)
+            res.send('OK')
             /*if(response.status==200){
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
