@@ -7,7 +7,7 @@ const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 const cors = require('cors');
 router.use(cors({
-  origin:"*",
+  origin:"https://itsnando.com",
 }))
 router.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin", "itsnando.com");
