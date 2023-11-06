@@ -7,9 +7,9 @@ const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 
 router.use(function(req,res,next){
-  res.header('Access-Control-Allow-Origin', '*'); //replace localhost with actual host
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+    res.header("Access-Control-Allow-Origin", "localhost");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     next();
   });
 router.use(bodyParser.json({limit: 2500000}))
