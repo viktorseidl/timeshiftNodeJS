@@ -16,7 +16,7 @@ router.use(function(req,res,next){
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(cors({
-  origin:"https://itsnando.com",
+  origin:"*",
 }))
 /**
  * @Route /api/v1/standort/connectorToken
