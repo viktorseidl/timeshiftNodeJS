@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com"
-
+const cors = require('cors');
 router.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept, Authorization");
@@ -15,6 +15,9 @@ router.use(function(req,res,next){
 
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
+router.use(cors({
+  origin:"https://itsnando.com",
+}))
 /**
  * @Route /api/v1/standort/connectorToken
  * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
