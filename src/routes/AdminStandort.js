@@ -4,7 +4,7 @@ const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
-const Domaine="https://itsnando.com"
+const Domaine="http://itsnando.com"
 const cors = require('cors');
  router.use(cors({
   origin:"*",
