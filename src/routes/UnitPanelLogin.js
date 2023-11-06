@@ -38,13 +38,13 @@ router.post('/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
                 E:EncData.E,
                 XFRC: connectorToken }),
               customConfig);
-              res.send(response.data)
-            /*if(response.status==200){
+             
+            if(response.status==200){
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
               res.status(500).json({error:'Internal Server Error'});
-            }*/
+            }
         }catch(error){
             res.status(500).json({error:'Internal Server Error'});
         }
@@ -77,12 +77,13 @@ router.post('/ucontrol/login/:uapi/:ltoken/:ctoken', async (req,res)=>{
                 XFRC: connectorToken }),
               customConfig);
             //QUERY SUCCESSFUL
-            if(response.status==200){
+            res.send(response.data)
+            /*if(response.status==200){
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
               res.status(500).json({error:'Internal Server Error'});
-            }
+            }*/
         }catch(error){
             res.status(500).json({error:'Internal Server Error'});
         }
