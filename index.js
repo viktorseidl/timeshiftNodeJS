@@ -4,7 +4,7 @@ const axios = require('axios');
 const app = express();
 const lib = require('./src/Utils/connectorHeader');
 const Domaine="http://localhost"
-
+const PORT = 3000;
 /**
  * IMPORT ROUTES
  */
@@ -38,8 +38,10 @@ app.use('/api/v1/ulogincontroller', UnitPanelLogin);
 app.use('/api/v1/ucontrol/apanel/standorte', AdminStandortRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
+app.use('/test/',async (req,res)=>{
+  res.send('OK')
+})
 
-const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);   
 });
