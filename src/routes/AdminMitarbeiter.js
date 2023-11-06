@@ -23,8 +23,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
-      const EncData = req.body; 
-      
+      const EncData = req.body;  
       try{
               const querytype = req.params.typ;
               const stid = req.params.stid;
@@ -44,10 +43,8 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
-            //QUERY SUCCESSFUL
-            console.log(response.data) 
-            if(response.status==200){
-              console.log(response.data)
+            //QUERY SUCCESSFUL 
+            if(response.status==200){ 
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{

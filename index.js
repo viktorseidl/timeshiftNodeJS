@@ -10,6 +10,7 @@ const Domaine="http://localhost"
  */
 const AdminStandortRoutes=require('./src/routes/AdminStandort');
 const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
+const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
@@ -36,6 +37,7 @@ app.use('/api/v1/activate', ActivateUnit);
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);
 app.use('/api/v1/ucontrol/apanel/standorte', AdminStandortRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
+app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
