@@ -12,6 +12,7 @@ router.use(function(req,res,next){
     res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     next();
   });
+  
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
 /**
