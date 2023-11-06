@@ -6,7 +6,7 @@ const app = express();
 const lib = require('./src/Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 const PORT = 3000;
-app.use(cors())
+ 
 /**
  * IMPORT ROUTES
  */

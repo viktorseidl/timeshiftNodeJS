@@ -6,7 +6,7 @@ const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 const cors = require('cors');
-router.use(cors())
+ 
 router.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -61,7 +61,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
    * @Route /api/v1/standort/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
    */
-  router.post('/:typ/:stid/:ctoken',cors(), async (req,res)=>{
+  router.post('/:typ/:stid/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
