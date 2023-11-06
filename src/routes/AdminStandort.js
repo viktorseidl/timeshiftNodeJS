@@ -88,7 +88,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
               customConfig);
               console.log(response)
             //QUERY SUCCESSFUL 
-            if(response.status==200){ 
+            if(response.status){ 
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
