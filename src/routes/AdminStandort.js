@@ -8,7 +8,7 @@ const Domaine="https://itsnando.com"
 const cors = require('cors');
  
 router.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "itsnando.com");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     next();
@@ -61,7 +61,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
    * @Route /api/v1/standort/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
    */
-  router.post('/:typ/:stid/:ctoken', cors() ,async (req,res)=>{
+  router.post('/:typ/:stid/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
@@ -86,6 +86,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
+              console.log(response)
             //QUERY SUCCESSFUL 
             if(response.status==200){ 
               const d = response.data;
