@@ -63,7 +63,9 @@ router.post('/:typ/:ctoken', async (req,res)=>{
    * @Route /api/v1/standort/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
    */
-  router.post('/:typ/:stid/:ctoken', async (req,res)=>{
+  router.post('/:typ/:stid/:ctoken',cors({
+    origin:"https://itsnando.com",
+  }), async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
