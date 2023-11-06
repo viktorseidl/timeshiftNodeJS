@@ -7,7 +7,7 @@ const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 const cors = require('cors');
 router.use(cors({
-  origin:"https://itsnando.com",
+  origin:"*",
 }))
 router.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
@@ -64,7 +64,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
    */
   router.post('/:typ/:stid/:ctoken',cors({
-    origin:"https://itsnando.com",
+    origin:"*",
   }), async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
