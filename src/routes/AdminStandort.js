@@ -32,29 +32,13 @@ router.post('/:typ/:ctoken', async (req,res)=>{
               'Content-Type': 'application/json',
               })            
             };
-            let response
-            if(querytype==6){
-              const req = {
-                method: "POST",
-                headers: new Headers({
-                    "content-type": "application/json",
-                }),
-                body: JSON.stringify({ 
-                  T:querytype,
-                  E:EncData.E,
-                  XFRC: connectorToken }),
-              };
-              response = await fetch(
-                `${Domaine}/backend/API/ucontroller/adminpanel/UAdminStandorte.php`,req);
-            }else
-            response = await axios.post(
+            const response = await axios.post(
               `${Domaine}/backend/API/ucontroller/adminpanel/UAdminStandorte.php`,
               JSON.stringify({ 
                 T:querytype,
                 E:EncData.E,
                 XFRC: connectorToken }),
               customConfig);
-            }
             //QUERY SUCCESSFUL  
             if(response.status==200){
               const d = response.data;
