@@ -4,16 +4,12 @@ const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
-const Domaine="http://itsnando.com"
-const cors = require('cors');
- router.use(cors({
-  origin:"*",
- }))
+const Domaine="https://itsnando.com" 
 router.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  next();
   });
 
 router.use(bodyParser.json())
