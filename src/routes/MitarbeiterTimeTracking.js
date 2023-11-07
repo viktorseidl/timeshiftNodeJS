@@ -19,14 +19,13 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
    * @Route /api/v1/Mitarbeiter/QueryTyp
    * TIMETRACKING MITARBEITER
    */
-  router.post('/:typ/:stid/:ctoken', async (req,res)=>{
+  router.post('/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
       const EncData = req.body;       
       try{
-              const querytype = req.params.typ;
-              const stid = req.params.stid;
+              const querytype = req.params.typ; 
               const connectorToken=lib.getConnectionHeader();
             const customConfig = {
               headers: new Headers({
@@ -36,15 +35,14 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
             const response = await axios.post(
               `${Domaine}/backend/API/ucontroller/UMitarbeiterTimeTracking.php`,
               JSON.stringify({ 
-                T:querytype,
-                StID:stid,
+                T:querytype, 
                 E:EncData.E,
                 I:IP.address()?IP.address():req.header('x-forwarded-for')?req.header('x-forwarded-for'):req.socket.remoteAddress,//req.socket.remoteAddress,
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
             //QUERY SUCCESSFUL
-            console.log(response.data) 
+             
             if(response.status==200){
               console.log(response.data)
               const d = response.data;

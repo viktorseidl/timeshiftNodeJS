@@ -84,15 +84,12 @@ router.post('/:typ/:ctoken', async (req,res)=>{
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
-              console.log(response)
-              res.send(response.data);
-            //QUERY SUCCESSFUL 
-            /*if(response.status){ 
+              if(response.status){ 
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
               res.status(500).json({error:'Internal Server Error'});
-            }*/
+            }
         }catch(error){
             res.status(500).json({error:'Internal Server Error'});
         }
