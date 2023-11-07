@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 const lib = require('./src/Utils/connectorHeader');
-const Domaine="https://itsnando.com"
+const Domaine="http://itsnando.com"
 const PORT = 3000;
+app.use(cors({
+  origin:"*",
+ }))
 /**
  * IMPORT ROUTES
  */
@@ -22,7 +26,7 @@ const EncryptionContext=require('./src/routes/EncryptionContext');
 app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
   next();
 });
 //app.use(bodyParser.json())
