@@ -60,7 +60,7 @@ router.post('/:typ/:ctoken', async (req,res)=>{
    * @Route /api/v1/standort/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
    */
-  router.post('/:typ/:stid/:ctoken', async (req,res,next)=>{
+  router.post('/:typ/:stid/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
@@ -86,13 +86,14 @@ router.post('/:typ/:ctoken', async (req,res)=>{
                 XFRC: connectorToken }),
               customConfig);
               console.log(response)
+              res.send(response.data);
             //QUERY SUCCESSFUL 
-            if(response.status){ 
+            /*if(response.status){ 
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
               res.status(500).json({error:'Internal Server Error'});
-            }
+            }*/
         }catch(error){
             res.status(500).json({error:'Internal Server Error'});
         }
