@@ -3,6 +3,7 @@ const router = express.Router();
 const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const cors = require('cors');
 const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com" 
 router.use(function(req,res,next){
@@ -11,7 +12,7 @@ router.use(function(req,res,next){
   res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   next();
   });
-
+router.use(cors());
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
  
