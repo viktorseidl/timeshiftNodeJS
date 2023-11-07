@@ -8,6 +8,7 @@ const Domaine="http://itsnando.com"
 const PORT = 3000;
 app.use(cors({
   origin:"*",
+  optionsSuccessStatus: 200
  }))
 /**
  * IMPORT ROUTES
