@@ -41,14 +41,15 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
-            //QUERY SUCCESSFUL 
-            if(response.status==200){
+            //QUERY SUCCESSFUL
+            res.send(response.data) 
+            /*if(response.status==200){
               console.log(response.data)
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
               res.status(500).json({error:'Internal Server Error'});
-            }
+            }*/
         }catch(error){
             res.status(500).json({error:'Internal Server Error'});
         }
