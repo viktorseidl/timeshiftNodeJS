@@ -7,9 +7,9 @@ const lib = require('../Utils/connectorHeader');
 const Domaine="https://itsnando.com"
 
 router.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     next();
   });
 router.use(bodyParser.json({limit: 2500000}))
@@ -41,8 +41,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
                 F:EncData.F?EncData.F:'',
                 XFRC: connectorToken }),
               customConfig);
-            //QUERY SUCCESSFUL
-             
+            //QUERY SUCCESSFUL 
             if(response.status==200){
               console.log(response.data)
               const d = response.data;
