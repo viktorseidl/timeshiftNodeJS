@@ -4,7 +4,7 @@ const axios = require('axios');
 const cors = require('cors');
 const app = express();
 const lib = require('./src/Utils/connectorHeader');
-const Domaine="http://itsnando.com"
+const Domaine=lib.getDomain();
 const PORT = 3000;
 app.use(cors({
   origin:"*",

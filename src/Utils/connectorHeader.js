@@ -20,5 +20,7 @@ const getConnectionHeader=()=>{
   let r=parseInt(Math.random() * (51 - 1) + 0);
   return Arr[r].toString();
 }
-
-module.exports = { checkConnectionHeader, getConnectionHeader };
+const getDomain=()=>{
+  return "https://itsnando.com";
+}
+module.exports = { checkConnectionHeader, getConnectionHeader,getDomain };
