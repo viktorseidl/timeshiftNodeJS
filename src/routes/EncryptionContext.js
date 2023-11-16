@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
 const Domaine=lib.getDomain();
-
+router.use(cors({
+  origin:"*",
+  optionsSuccessStatus: 200
+ }))
 router.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
