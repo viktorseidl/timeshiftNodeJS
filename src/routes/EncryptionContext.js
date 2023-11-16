@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const lib = require('../Utils/connectorHeader');
 const Domaine=lib.getDomain();
+const cors = require('cors');
 router.use(cors({
   origin:"*",
   optionsSuccessStatus: 200
