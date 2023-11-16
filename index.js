@@ -6,10 +6,7 @@ const app = express();
 const lib = require('./src/Utils/connectorHeader');
 const Domaine=lib.getDomain();
 const PORT = 3000;
-app.use(cors({
-  origin:"*",
-  optionsSuccessStatus: 200
- }))
+app.use(cors())
 /**
  * IMPORT ROUTES
  */
