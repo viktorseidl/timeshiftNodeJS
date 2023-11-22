@@ -15,7 +15,7 @@ router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
  
   /**
-   * @Route /api/v1/standort/connectorToken
+   * @Route /api/v1/Abteilung/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
    */
   router.post('/:typ/:stid/:ctoken', async (req,res)=>{
