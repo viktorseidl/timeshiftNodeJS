@@ -6,13 +6,11 @@ const app = express();
 const lib = require('./src/Utils/connectorHeader');
 const Domaine=lib.getDomain();
 const PORT = 3000;
-app.use(cors({
-  origin:"*",
-  optionsSuccessStatus: 200
- }))
+app.use(cors())
 /**
  * IMPORT ROUTES
  */
+const AdminAbteilungRoutes=require('./src/routes/AdminAbteilung');
 const AdminStandortRoutes=require('./src/routes/AdminStandort');
 const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
 const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
@@ -41,11 +39,10 @@ app.use('/api/v1/signup', SignupNewUnit);
 app.use('/api/v1/activate', ActivateUnit);
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);
 app.use('/api/v1/ucontrol/apanel/standorte', AdminStandortRoutes);
+app.use('/api/v1/ucontrol/apanel/abteilung', AdminAbteilungRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
-app.use('/test/',async (req,res)=>{
-  res.send('OK')
-})
+ 
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);   
