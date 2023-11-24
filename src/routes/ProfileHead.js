@@ -20,7 +20,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
    * PROFILEHEAD MITARBEITER
    */
   router.post('/:typ/:ctoken', async (req,res)=>{
-    //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
+    //CHECK IF CONNECTION ALLOWED ELSE RETURN 500 
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
       const EncData = req.body;       
