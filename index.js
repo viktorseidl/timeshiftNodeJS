@@ -13,6 +13,7 @@ app.use(cors())
 const AdminAbteilungRoutes=require('./src/routes/AdminAbteilung');
 const AdminStandortRoutes=require('./src/routes/AdminStandort');
 const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
+const ProfileHeadRoutes=require('./src/routes/ProfileHead');
 const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
@@ -27,9 +28,7 @@ app.use(function(req,res,next){
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
   next();
-});
-//app.use(bodyParser.json())
-//app.use(bodyParser.urlencoded({ extended: false }))
+}); 
 
 /**
  * ROUTE HANDLING
@@ -42,6 +41,7 @@ app.use('/api/v1/ucontrol/apanel/standorte', AdminStandortRoutes);
 app.use('/api/v1/ucontrol/apanel/abteilung', AdminAbteilungRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
+app.use('/api/v1/ucontrol/profile/header', ProfileHeadRoutes);
  
 
 app.listen(PORT, () => {
