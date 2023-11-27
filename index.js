@@ -11,6 +11,7 @@ app.use(cors())
  * IMPORT ROUTES
  */
 const AdminAbteilungRoutes=require('./src/routes/AdminAbteilung');
+const AdminBereicheRoutes=require('./src/routes/AdminBereiche');
 const AdminStandortRoutes=require('./src/routes/AdminStandort');
 const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
 const ProfileHeadRoutes=require('./src/routes/ProfileHead');
@@ -39,6 +40,7 @@ app.use('/api/v1/activate', ActivateUnit);
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);
 app.use('/api/v1/ucontrol/apanel/standorte', AdminStandortRoutes);
 app.use('/api/v1/ucontrol/apanel/abteilung', AdminAbteilungRoutes);
+app.use('/api/v1/ucontrol/apanel/bereiche', AdminBereicheRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
 app.use('/api/v1/ucontrol/profile/header', ProfileHeadRoutes);
