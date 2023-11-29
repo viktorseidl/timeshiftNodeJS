@@ -37,7 +37,7 @@ app.use(function(req,res,next){
  */
 app.use('/api/v1/encrypt', EncryptionContext);
 app.use('/api/v1/signup', SignupNewUnit);
-app.use('/api/v1/activate', ActivateUnit);
+app.use('/api/v1/activate', ActivateUnit); 
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);
 app.use('/api/v1/ucontrol/apanel/standorte', AdminStandortRoutes);
 app.use('/api/v1/ucontrol/apanel/abteilung', AdminAbteilungRoutes);
