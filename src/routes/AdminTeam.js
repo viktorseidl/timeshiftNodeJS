@@ -34,7 +34,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ucontroller/adminpanel/UAdminGruppe.php`,
+              `${Domaine}/backend/API/ucontroller/adminpanel/UAdminTeam.php`,
               JSON.stringify({ 
                 T:querytype,
                 StID:stid,
