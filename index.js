@@ -21,6 +21,7 @@ const AdminStandortRoutes=require('./src/routes/AdminStandort');
 const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
 const ProfileHeadRoutes=require('./src/routes/ProfileHead');
 const UDashboardRoutes=require('./src/routes/UDashboard');
+const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen');
 const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
@@ -54,6 +55,7 @@ app.use('/api/v1/ucontrol/apanel/gruppe', AdminGruppeRoutes);
 app.use('/api/v1/ucontrol/apanel/bereiche', AdminBereicheRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/dashboard/overview', UDashboardRoutes);
+app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
 app.use('/api/v1/ucontrol/profile/header', ProfileHeadRoutes);
  
