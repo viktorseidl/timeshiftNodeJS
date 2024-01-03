@@ -54,10 +54,10 @@ app.use('/api/v1/ucontrol/apanel/terminal', AdminTerminalRoutes);
 app.use('/api/v1/ucontrol/apanel/gruppe', AdminGruppeRoutes);
 app.use('/api/v1/ucontrol/apanel/bereiche', AdminBereicheRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
-app.use('/api/v1/ucontrol/dashboard/overview', UDashboardRoutes);
+app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
-app.use('/api/v1/ucontrol/profile/header', ProfileHeadRoutes);
+app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
  
 
 app.listen(PORT, () => {
