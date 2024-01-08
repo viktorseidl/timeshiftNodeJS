@@ -23,6 +23,7 @@ const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
 const ProfileHeadRoutes=require('./src/routes/ProfileHead');
 const UDashboardRoutes=require('./src/routes/UDashboard');
 const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen');
+const UAppTerminalScreenRoutes=require('./src/routes/UAppTerminalScreen');
 const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
@@ -58,6 +59,7 @@ app.use('/api/v1/ucontrol/apanel/vertrag', AdminVertragRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
+app.use('/api/v1/app/terminal', UAppTerminalScreenRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
  
