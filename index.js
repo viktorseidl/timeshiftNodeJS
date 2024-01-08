@@ -12,6 +12,7 @@ app.use(cors())
  */
 const AdminAbteilungRoutes=require('./src/routes/AdminAbteilung');
 const AdminBereicheRoutes=require('./src/routes/AdminBereiche');
+const AdminVertragRoutes=require('./src/routes/AdminVertrag');
 const AdminTeamRoutes=require('./src/routes/AdminTeam');
 const AdminSettingsRoutes=require('./src/routes/AdminSettings');
 const TeamPageRoutes=require('./src/routes/TeamPage');
@@ -53,6 +54,7 @@ app.use('/teampage', TeamPageRoutes);
 app.use('/api/v1/ucontrol/apanel/terminal', AdminTerminalRoutes);
 app.use('/api/v1/ucontrol/apanel/gruppe', AdminGruppeRoutes);
 app.use('/api/v1/ucontrol/apanel/bereiche', AdminBereicheRoutes);
+app.use('/api/v1/ucontrol/apanel/vertrag', AdminVertragRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
