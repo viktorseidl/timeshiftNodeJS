@@ -45,10 +45,10 @@ router.use(bodyParser.urlencoded({ extended: false }))
               customConfig);
               if(response.status){ 
               const d = response.data;
-              console.log(response.data)
-              (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
+               
+              (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'+response});   
             }else{
-              res.status(500).json({error:'Internal Server Error'});
+              res.status(500).json({error:'Internal Server Error'+response});
             }
         }catch(error){
             res.status(500).json({error:'Internal Server Error'});
