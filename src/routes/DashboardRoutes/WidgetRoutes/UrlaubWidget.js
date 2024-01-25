@@ -3,7 +3,7 @@ const router = express.Router();
 const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const lib = require('../Utils/connectorHeader');
+const lib = require('./../../../Utils/connectorHeader');
 const Domaine=lib.getDomain();
 const cors =require('cors'); 
 router.use(function(req,res,next){
