@@ -19,7 +19,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
    * @Route /api/v1/Mitarbeiter/QueryTyp
    * DASHBOARD MITARBEITER
    */
-  router.post('/overview/:typ/:ctoken', async (req,res)=>{
+  router.post('/urlaub/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
@@ -58,7 +58,6 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
     }
      
   });
-  const WidgetRoutes=require('./DashboardRoutes/WidgetRoutes/UrlaubWidget');
-  router.use('/widget', WidgetRoutes);
+  
   
   module.exports = router;
