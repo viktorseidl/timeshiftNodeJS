@@ -30,9 +30,9 @@ const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
 /**
- * IMPORT DASHBOARD ROUTES
+ * IMPORT DASHBOARD ROUTES 
  */
-const WidgetUrlaub= require('./src/routes/dashboardroutes/didgetroutes/UrlaubWidget');
+const WidgetUrlaub= require('./src/routes/DashboardRoutes/WidgetRoutes/UrlaubWidget');
 /**
  * USE REDIRECT
  */
