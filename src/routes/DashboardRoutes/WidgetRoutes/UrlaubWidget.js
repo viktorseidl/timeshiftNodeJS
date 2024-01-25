@@ -33,7 +33,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ucontroller/UMitarbeiterDashboard.php`,
+              `${Domaine}/backend/API/ucontroller/dashboard/UUrlaubWidget.php`,
               JSON.stringify({ 
                 T:querytype,  
                 E:EncData.E,
