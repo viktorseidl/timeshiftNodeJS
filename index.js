@@ -1,6 +1,4 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const axios = require('axios');
+const express = require('express'); 
 const cors = require('cors');
 const app = express();
 const lib = require('./src/Utils/connectorHeader');
@@ -32,7 +30,7 @@ const EncryptionContext=require('./src/routes/EncryptionContext');
 /**
  * IMPORT DASHBOARD ROUTES 
  */
-const WidgetUrlaub= require('./src/routes/DashboardRoutes/WidgetRoutes/UrlaubWidget');
+const Widgets= require('./src/routes/DashboardRoutes/Widgets');
 /**
  * USE REDIRECT
  */
@@ -68,7 +66,7 @@ app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
 /**
  * DASHBOARD ROUTES
  */
-app.use('/api/v1/dashboard/widget', WidgetUrlaub);
+app.use('/api/v1/dashboard', Widgets);
  
 
 app.listen(PORT, () => {

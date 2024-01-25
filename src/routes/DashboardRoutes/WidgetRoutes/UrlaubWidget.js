@@ -16,8 +16,8 @@ router.use(bodyParser.json({limit: 2500000}))
 router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
 
   /**
-   * @Route /api/v1/Mitarbeiter/QueryTyp
-   * DASHBOARD MITARBEITER
+   * @Route /api/v1/dashboard/widget/urlaub/QueryTyp
+   * URLAUB WIDGET
    */
   router.post('/urlaub/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
