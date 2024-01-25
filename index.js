@@ -32,7 +32,7 @@ const EncryptionContext=require('./src/routes/EncryptionContext');
 /**
  * IMPORT DASHBOARD ROUTES
  */
-const WidgetUrlaub= require('./src/routes/DashboardRoutes/WidgetRoutes/UrlaubWidget');
+const WidgetUrlaub= require('./src/routes/dashboardroutes/didgetroutes/UrlaubWidget');
 /**
  * USE REDIRECT
  */
