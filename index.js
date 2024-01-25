@@ -29,7 +29,10 @@ const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
-
+/**
+ * IMPORT DASHBOARD ROUTES
+ */
+const WidgetUrlaub= require('./src/routes/DashboardRoutes/WidgetRoutes/UrlaubWidget');
 /**
  * USE REDIRECT
  */
@@ -62,6 +65,10 @@ app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
 app.use('/api/v1/app/terminal', UAppTerminalScreenRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
+/**
+ * DASHBOARD ROUTES
+ */
+app.use('/api/v1/dashboard/widget', WidgetUrlaub);
  
 
 app.listen(PORT, () => {

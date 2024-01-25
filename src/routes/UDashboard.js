@@ -58,7 +58,6 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
     }
      
   });
-  const WidgetRoutes=require('./DashboardRoutes/WidgetRoutes/UrlaubWidget');
-  router.use('/widget', WidgetRoutes);
+  
   
   module.exports = router;
