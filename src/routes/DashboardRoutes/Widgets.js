@@ -12,6 +12,8 @@ router.use(function(req,res,next){
 }); 
 
 const UrlaubWidget=require('./WidgetRoutes/UrlaubWidget');
+const TimeTouch=require('./TimeTrackingRoutes/TimeTracking');
 router.use('/widget', UrlaubWidget);  
+router.use('/track', TimeTouch);  
   
 module.exports = router;
