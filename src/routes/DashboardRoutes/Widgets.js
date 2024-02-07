@@ -12,8 +12,10 @@ router.use(function(req,res,next){
 }); 
 
 const UrlaubWidget=require('./WidgetRoutes/UrlaubWidget');
+const KrankContainerWidget=require('./WidgetRoutes/KrankContainerWidget');
 const TimeTouch=require('./TimeTrackingRoutes/TimeTracking');
 router.use('/widget', UrlaubWidget);  
+router.use('/krank', KrankContainerWidget);  
 router.use('/track', TimeTouch);  
   
 module.exports = router;
