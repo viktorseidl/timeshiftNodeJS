@@ -3,7 +3,7 @@ const router = express.Router();
 const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const lib = require('../Utils/connectorHeader');
+const lib = require('./../../../Utils/connectorHeader');
 const Domaine=lib.getDomain();
 const cors =require('cors'); 
 router.use(function(req,res,next){
@@ -16,11 +16,11 @@ router.use(bodyParser.json({limit: 2500000}))
 router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
 
   /**
-   * @Route /api/v1/Mitarbeiter/QueryTyp
-   * PROFILEHEAD MITARBEITER
+   * @Route /api/v1/dashboard/krank/widget/QueryTyp
+   * TAGE CONTAINER WIDGET WIDGET
    */
-  router.post('/header/:typ/:ctoken', async (req,res)=>{
-    //CHECK IF CONNECTION ALLOWED ELSE RETURN 500 
+  router.post('/widget/:typ/:ctoken', async (req,res)=>{
+    //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
       const EncData = req.body;       
@@ -33,7 +33,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ucontroller/UProfileHead.php`,
+              `${Domaine}/backend/API/ucontroller/dashboard/UMitarbeiterWidget.php`,
               JSON.stringify({ 
                 T:querytype,  
                 E:EncData.E,

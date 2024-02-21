@@ -43,8 +43,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               customConfig);
             //QUERY SUCCESSFUL
              
-            if(response.status==200){
-              console.log(response.data)
+            if(response.status==200){ 
               const d = response.data;
               (lib.checkConnectionHeader(d.XFRC))? res.send(d): res.status(500).json({error:'Internal Server Error'});   
             }else{
