@@ -19,7 +19,7 @@ const TimeTouch=require('./TimeTrackingRoutes/TimeTracking');
 router.use('/urlaub', UrlaubContainerWidget);  
 router.use('/krank', KrankContainerWidget);  
 router.use('/tage', TageContainerWidget);  
-router.use('/mitarbeiter', MitarbeiterWidget);  
+router.use('/mitarbeiter', MitarbeiterWidget);   
 router.use('/track', TimeTouch);  
   
 module.exports = router;
