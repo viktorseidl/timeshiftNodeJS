@@ -16,8 +16,8 @@ router.use(bodyParser.json({limit: 2500000}))
 router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
 
   /**
-   * @Route /api/v1/dashboard/widget/urlaub/QueryTyp
-   * URLAUB WIDGET
+   * @Route /api/v1/dashboard/krank/widget/QueryTyp
+   * TAGE CONTAINER WIDGET WIDGET
    */
   router.post('/widget/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
@@ -33,7 +33,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ucontroller/dashboard/UUrlaubWidget.php`,
+              `${Domaine}/backend/API/ucontroller/dashboard/UUrlaubContainerWidget.php`,
               JSON.stringify({ 
                 T:querytype,  
                 E:EncData.E,

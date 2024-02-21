@@ -11,12 +11,12 @@ router.use(function(req,res,next){
     next();
 }); 
 
-const UrlaubWidget=require('./WidgetRoutes/UrlaubWidget');
+const UrlaubContainerWidget=require('./WidgetRoutes/UrlaubContainerWidget');
 const KrankContainerWidget=require('./WidgetRoutes/KrankContainerWidget');
 const TageContainerWidget=require('./WidgetRoutes/TageContainerWidget');
 const MitarbeiterWidget=require('./WidgetRoutes/MitarbeiterWidget');
 const TimeTouch=require('./TimeTrackingRoutes/TimeTracking');
-router.use('/urlaub', UrlaubWidget);  
+router.use('/urlaub', UrlaubContainerWidget);  
 router.use('/krank', KrankContainerWidget);  
 router.use('/tage', TageContainerWidget);  
 router.use('/mitarbeiter', MitarbeiterWidget);  
