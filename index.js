@@ -26,8 +26,7 @@ app.use(function(req,res,next){
  ------------------------------------------------------------------------------------------------------------*/
  /*
  * IMPORTS
- *-----------------------------------------------------------------------------*/ 
-const AdminSettingsRoutes=require('./src/routes/AdminSettings');
+ *-----------------------------------------------------------------------------*/  
 const TeamPageRoutes=require('./src/routes/TeamPage'); 
 const ProfileHeadRoutes=require('./src/routes/ProfileHead');
 const UDashboardRoutes=require('./src/routes/UDashboard');
@@ -88,10 +87,8 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
 app.use('/api/v1/encrypt', EncryptionContext);
 app.use('/api/v1/signup', SignupNewUnit);
 app.use('/api/v1/activate', ActivateUnit); 
-app.use('/api/v1/ulogincontroller', UnitPanelLogin);   
-app.use('/api/v1/ucontrol/apanel/setting', AdminSettingsRoutes);
+app.use('/api/v1/ulogincontroller', UnitPanelLogin);    
 app.use('/teampage', TeamPageRoutes); 
-app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes); 
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);  
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
