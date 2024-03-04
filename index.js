@@ -28,8 +28,7 @@ app.use(function(req,res,next){
  * IMPORTS
  *-----------------------------------------------------------------------------*/  
 const TeamPageRoutes=require('./src/routes/TeamPage');   
-const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen'); 
-const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
+const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen');  
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
@@ -73,16 +72,12 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *           -> profile/route/header/:typ/:ctoken
   *      - WEBLOGIN: 
   *        -UNIT LOGIN 
-  *           -> login/route/unit/login/:uapi/:ltoken/:ctoken
-  *           -> login/route/unit/cryptlh/:ctoken
-  *        -PROFILE -- TODO
-  *        -PROFILE PERSONALAKTE -- TODO
-  *        -PROFILE MESSAGES -- TODO
+  *           -> weblogin/route/unit/login/:uapi/:ltoken/:ctoken
+  *           -> weblogin/route/unit/cryptlh/:ctoken 
   *      - ZEITERFASSUNG: -- TODO
   *      - URLAUBPLANNER: -- TODO
   *      - TICKETING: -- TODO
-  *      - WIKI: -- TODO
-  *      - SETTINGS: -- TODO
+  *      - WIKI: -- TODO 
   *            
  *---------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------
@@ -90,11 +85,10 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
  *---------------------------------------------------------------------------------*/
 app.use('/api/v1/encrypt', EncryptionContext);
 app.use('/api/v1/signup', SignupNewUnit);
-app.use('/api/v1/activate', ActivateUnit); 
-app.use('/api/v1/ulogincontroller', UnitPanelLogin);    
+app.use('/api/v1/activate', ActivateUnit);  
 app.use('/teampage', TeamPageRoutes); 
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);    
-app.use('/api/v1/login', Login); //-------------------------------------> DASHBOARD
+app.use('/api/v1/weblogin', Login); //-------------------------------------------> WEBLOGIN
 app.use('/api/v1/dashboard', Widgets); //-------------------------------------> DASHBOARD
 app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
 app.use('/api/v1/controller', AdminRouter); //--------------------------------> ADMIN
