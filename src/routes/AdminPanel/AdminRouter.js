@@ -12,6 +12,8 @@ router.use(function(req,res,next){
 }); 
 
 const Standorte=require('./Standorte/Standorte');     
-router.use('/route', Standorte);  
+const Abteilungen=require('./Abteilungen/Abteilung');     
+router.use('/route/standort', Standorte);  
+router.use('/route/abteilung', Abteilungen);  
   
 module.exports = router;

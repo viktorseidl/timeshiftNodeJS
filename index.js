@@ -63,6 +63,7 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *           -> controller/route/standort/:typ/:ctoken
   *           -> controller/route/standort/:typ/:stid/:ctoken
   *        -ABTEILUNGEN
+  *           -> controller/route/abteilung/:typ/:stid/:ctoken
   *        -BEREICHE
   *        -GRUPPEN
   *        -TEAMS
@@ -101,8 +102,8 @@ app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);  
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
-app.use('/api/v1/', Widgets); //---------------------------------------------->DASHBOARD
-app.use('/api/v1/controller', AdminRouter); //---------------------------------------------->DASHBOARD
+app.use('/api/v1/', Widgets); //----------------------------------------------> DASHBOARD
+app.use('/api/v1/controller', AdminRouter); //--------------------------------> ADMIN
 /**-----------------------------------------------------------------------------------------------------------
  * 
  *  END---WEB-PANEL ROUTES
