@@ -31,12 +31,12 @@ router.use('/normal/terminal', Login);
 /**
  * LOGIN FORMEN
  */
-//const Pin=require('./Login/Logforms/Pin'); 
+const Pin=require('./Login/Logforms/Pin'); 
 /**
  * LOGIN FORMEN ROUTES
  * PIN : normal/terminal/pin/:typ/:ctoken
  */
-//router.use('normal/terminal', Pin);  
+router.use('/normal/terminal', Pin);  
 
 
 /**

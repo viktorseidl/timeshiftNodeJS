@@ -5,9 +5,28 @@ const lib = require('./src/Utils/connectorHeader');
 const Domaine=lib.getDomain();
 const PORT = 3000;
 app.use(cors())
+ 
+
+
+
+
 /**
- * IMPORT ROUTES
+ * USE REDIRECT
  */
+app.use(function(req,res,next){
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
+  next();
+});  
+/**-----------------------------------------------------------------------------------------------------------
+ * 
+ *  START---WEB-PANEL ROUTES
+ * 
+ ------------------------------------------------------------------------------------------------------------*/
+ /*
+ * IMPORTS
+ *-----------------------------------------------------------------------------*/
 const AdminAbteilungRoutes=require('./src/routes/AdminAbteilung');
 const AdminBereicheRoutes=require('./src/routes/AdminBereiche');
 const AdminVertragRoutes=require('./src/routes/AdminVertrag');
@@ -25,30 +44,31 @@ const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
-const EncryptionContext=require('./src/routes/EncryptionContext'); 
-
+const EncryptionContext=require('./src/routes/EncryptionContext');
 /**
  * IMPORT DASHBOARD ROUTES 
  */
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
-
-/**
- * IMPORT APP TERMINAL ROUTES
- */
-const AppNormalTerminalRoutes=require('./src/routes/AppNormalTerminal/AppNormalTerminalRoutes'); 
-/**
- * USE REDIRECT
- */
-app.use(function(req,res,next){
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
-  next();
-}); 
-
-/**
+ /*--------------------------------------------------------------------------------
+  * APP NORMAL TERMINAL ROUTES
+  * /api/v1/app/
+  *    SUBROUTES
+  *      - NORMAL TERMINAL:
+  *        -> normal/terminal/
+  *            SUBROUTES
+  *              - LOGIN
+  *              -> login/:typ/:ctoken
+  *              - LOGIN FORMS
+  *                -PIN
+  *                  -> pin/:typ/:ctoken
+  *                  -> nfc/:typ/:ctoken
+  *                  -> bluethoot/:typ/:ctoken
+  *                  -> qrcode/:typ/:ctoken
+  *                  -> credentials/:typ/:ctoken
+ *---------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------
  * ROUTE HANDLING
- */
+ *---------------------------------------------------------------------------------*/
 app.use('/api/v1/encrypt', EncryptionContext);
 app.use('/api/v1/signup', SignupNewUnit);
 app.use('/api/v1/activate', ActivateUnit); 
@@ -72,11 +92,43 @@ app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
  * DASHBOARD ROUTES
  */
 app.use('/api/v1/dashboard', Widgets);
-/**
- * APP NORMAL TERMINAL ROUTES
- * /api/v1/app/normal/terminal/login/:typ/:ctoken
+/**-----------------------------------------------------------------------------------------------------------
+ * 
+ *  END---WEB-PANEL ROUTES
+ * 
+ ------------------------------------------------------------------------------------------------------------*/ 
+/**-----------------------------------------------------------------------------------------------------------
+ * 
+ *  START---ANDROID/IOS APP ROUTES
+ * 
+ ------------------------------------------------------------------------------------------------------------*/
+ /**
+ * IMPORT APP TERMINAL ROUTES
+ */
+const AppNormalTerminalRoutes=require('./src/routes/AppNormalTerminal/AppNormalTerminalRoutes'); 
+ /**
+  * APP NORMAL TERMINAL ROUTES
+  * /api/v1/app/
+  *    SUBROUTES
+  *      - NORMAL TERMINAL:
+  *        -> normal/terminal/
+  *            SUBROUTES
+  *              - LOGIN
+  *              -> login/:typ/:ctoken
+  *              - LOGIN FORMS
+  *                -PIN
+  *                  -> pin/:typ/:ctoken
+  *                  -> nfc/:typ/:ctoken
+  *                  -> bluethoot/:typ/:ctoken
+  *                  -> qrcode/:typ/:ctoken
+  *                  -> credentials/:typ/:ctoken
  */
 app.use('/api/v1/app', AppNormalTerminalRoutes);
+/**-----------------------------------------------------------------------------------------------------------
+ * 
+ *  END---ANDROID/IOS APP ROUTES
+ * 
+ ------------------------------------------------------------------------------------------------------------*/
  
 
 app.listen(PORT, () => {
