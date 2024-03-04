@@ -10,9 +10,14 @@ router.use(function(req,res,next){
     res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
     next();
 }); 
-
+/**
+ * IMPORT SUB-ROUTES
+ */
 const Standorte=require('./Standorte/Standorte');     
 const Abteilungen=require('./Abteilungen/Abteilung');     
+/**
+ * SUB-ROUTING
+ */
 router.use('/route/standort', Standorte);  
 router.use('/route/abteilung', Abteilungen);  
   
