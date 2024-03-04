@@ -35,7 +35,7 @@ const EncryptionContext=require('./src/routes/EncryptionContext');
 const Encryption=require('./src/routes/Encryption/EncryptionRouter'); 
 
 
-const UnitActivation= require('./src/routes/UnitActivation/UnitActivation');
+const UnitActivation= require('./src/routes/UnitActivation/UnitActivationRouter');
 const Profile= require('./src/routes/ProfileRoutes/ProfileRouter');
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
 const Login= require('./src/routes/WebLogin/LoginRouter');
