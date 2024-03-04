@@ -26,8 +26,7 @@ app.use(function(req,res,next){
  ------------------------------------------------------------------------------------------------------------*/
  /*
  * IMPORTS
- *-----------------------------------------------------------------------------*/ 
-const AdminBereicheRoutes=require('./src/routes/AdminBereiche');
+ *-----------------------------------------------------------------------------*/  
 const AdminVertragRoutes=require('./src/routes/AdminVertrag');
 const AdminTeamRoutes=require('./src/routes/AdminTeam');
 const AdminSettingsRoutes=require('./src/routes/AdminSettings');
@@ -92,8 +91,7 @@ app.use('/api/v1/ucontrol/apanel/team', AdminTeamRoutes);
 app.use('/api/v1/ucontrol/apanel/setting', AdminSettingsRoutes);
 app.use('/teampage', TeamPageRoutes);
 app.use('/api/v1/ucontrol/apanel/terminal', AdminTerminalRoutes);
-app.use('/api/v1/ucontrol/apanel/gruppe', AdminGruppeRoutes);
-app.use('/api/v1/ucontrol/apanel/bereiche', AdminBereicheRoutes);
+app.use('/api/v1/ucontrol/apanel/gruppe', AdminGruppeRoutes); 
 app.use('/api/v1/ucontrol/apanel/vertrag', AdminVertragRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
