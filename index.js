@@ -26,8 +26,7 @@ app.use(function(req,res,next){
  ------------------------------------------------------------------------------------------------------------*/
  /*
  * IMPORTS
- *-----------------------------------------------------------------------------*/  
-const AdminVertragRoutes=require('./src/routes/AdminVertrag'); 
+ *-----------------------------------------------------------------------------*/ 
 const AdminSettingsRoutes=require('./src/routes/AdminSettings');
 const TeamPageRoutes=require('./src/routes/TeamPage');
 const AdminTerminalRoutes=require('./src/routes/AdminTerminal');  
@@ -90,8 +89,7 @@ app.use('/api/v1/activate', ActivateUnit);
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);   
 app.use('/api/v1/ucontrol/apanel/setting', AdminSettingsRoutes);
 app.use('/teampage', TeamPageRoutes);
-app.use('/api/v1/ucontrol/apanel/terminal', AdminTerminalRoutes); 
-app.use('/api/v1/ucontrol/apanel/vertrag', AdminVertragRoutes); 
+app.use('/api/v1/ucontrol/apanel/terminal', AdminTerminalRoutes);  
 app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes); 
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);  
