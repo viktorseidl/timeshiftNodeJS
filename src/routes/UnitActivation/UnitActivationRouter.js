@@ -14,9 +14,11 @@ router.use(function(req,res,next){
  * IMPORT SUB-ROUTES
  */
 const Activate=require('./Activate/Activate');           
+const RootPass=require('./RootPass/ActivateRootPass');           
 /**
  * SUB-ROUTING
  */     
 router.use('/route/activation', Activate);     
+router.use('/route/verify', RootPass);     
   
 module.exports = router;

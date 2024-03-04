@@ -81,6 +81,7 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *      - UNIT ACTIVATION: 
   *        -ACTIVATE 
   *           -> start/route/activation/:token/:typ/:ctoken 
+  *           -> start/route/verify/:token/:typ/:ctoken 
   *      - ENCRYPTION: 
   *        -JWTCHECK 
   *           -> keygen/route/check/:handshake/:token/:ctoken 
