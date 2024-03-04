@@ -20,13 +20,13 @@ const AdminStandortRoutes=require('./src/routes/AdminStandort');
 const AdminMitarbeiterRoutes=require('./src/routes/AdminMitarbeiter');
 const ProfileHeadRoutes=require('./src/routes/ProfileHead');
 const UDashboardRoutes=require('./src/routes/UDashboard');
-const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen');
-const UAppTerminalScreenRoutes=require('./src/routes/UAppTerminalScreen');
+const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen'); 
 const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
+const AppNormalTerminalRoutes=require('./src/routes/AppNormalTerminal/AppNormalTerminalRoutes'); 
 /**
  * IMPORT DASHBOARD ROUTES 
  */
@@ -59,14 +59,19 @@ app.use('/api/v1/ucontrol/apanel/bereiche', AdminBereicheRoutes);
 app.use('/api/v1/ucontrol/apanel/vertrag', AdminVertragRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
-app.use('/api/v1/web/terminal', UTerminalScreenRoutes);
-app.use('/api/v1/app/terminal', UAppTerminalScreenRoutes);
+app.use('/api/v1/web/terminal', UTerminalScreenRoutes); 
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
+app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
 /**
  * DASHBOARD ROUTES
  */
 app.use('/api/v1/dashboard', Widgets);
+/**
+ * APP NORMAL TERMINAL ROUTES
+ * /api/v1/app/normal/terminal/login/:typ/:ctoken
+ */
+app.use('/api/v1/app', AppNormalTerminalRoutes);
  
 
 app.listen(PORT, () => {
