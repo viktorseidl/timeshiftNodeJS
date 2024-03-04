@@ -16,11 +16,13 @@ router.use(function(req,res,next){
 const Standorte=require('./Standorte/Standorte');     
 const Abteilungen=require('./Abteilungen/Abteilung');     
 const Bereiche=require('./Bereiche/Bereiche');     
+const Gruppen=require('./Gruppen/Gruppen');     
 /**
  * SUB-ROUTING
  */
 router.use('/route/standort', Standorte);  
 router.use('/route/abteilung', Abteilungen);  
 router.use('/route/bereiche', Bereiche);  
+router.use('/route/gruppen', Gruppen);  
   
 module.exports = router;
