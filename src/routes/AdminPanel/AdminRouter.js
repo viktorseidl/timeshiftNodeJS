@@ -18,6 +18,7 @@ const Abteilungen=require('./Abteilungen/Abteilung');
 const Bereiche=require('./Bereiche/Bereiche');     
 const Gruppen=require('./Gruppen/Gruppen');     
 const Teams=require('./Teams/Teams');     
+const Mitarbeiter=require('./Mitarbeiter/Mitarbeiter');     
 /**
  * SUB-ROUTING
  */
@@ -26,5 +27,6 @@ router.use('/route/abteilung', Abteilungen);
 router.use('/route/bereiche', Bereiche);  
 router.use('/route/gruppen', Gruppen);  
 router.use('/route/teams', Teams);  
+router.use('/route/mitarbeiter', Mitarbeiter);  
   
 module.exports = router;

@@ -67,6 +67,7 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *        -TEAMS
   *           -> controller/route/teams/:typ/:stid/:ctoken
   *        -MITARBEITER
+  *           -> controller/route/mitarbeiter/:typ/:stid/:ctoken
   *        -VETRÄGE
   *        -TERMINAL
   *      - PROFILE: 
