@@ -21,6 +21,7 @@ const Teams=require('./Teams/Teams');
 const Mitarbeiter=require('./Mitarbeiter/Mitarbeiter');     
 const Vertrag=require('./Vertrag/Vertrag');     
 const Terminals=require('./Terminals/Terminals');     
+const Einstellungen=require('./Einstellungen/Einstellungen');     
 /**
  * SUB-ROUTING
  */
@@ -32,5 +33,6 @@ router.use('/route/teams', Teams);
 router.use('/route/mitarbeiter', Mitarbeiter);  
 router.use('/route/vertrag', Vertrag);  
 router.use('/route/terminals', Terminals);  
+router.use('/route/einstellungen', Einstellungen);  
   
 module.exports = router;

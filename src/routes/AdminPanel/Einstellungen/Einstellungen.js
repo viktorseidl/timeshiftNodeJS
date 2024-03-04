@@ -3,7 +3,7 @@ const router = express.Router();
 const IP = require('ip');
 const bodyParser = require('body-parser');
 const axios = require('axios'); 
-const lib = require('../Utils/connectorHeader');
+const lib = require('../../../Utils/connectorHeader');
 const Domaine=lib.getDomain();
 router.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
@@ -13,7 +13,7 @@ router.use(function(req,res,next){
   }); 
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
-
+ 
   /**
    * @Route /api/v1/Abteilung/connectorToken
    * GET STANDORTE,ABTEILUNG,BEREICHE,GRUPPEN,TEAMS,MITARBEITER,
@@ -22,7 +22,8 @@ router.use(bodyParser.urlencoded({ extended: false }))
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
-      const EncData = req.body;  
+      const EncData = req.body; 
+      
       try{
               const querytype = req.params.typ;
               const stid = req.params.stid;
@@ -33,7 +34,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ucontroller/adminpanel/UAdminTerminal.php`,
+              `${Domaine}/backend/API/ucontroller/adminpanel/UAdminSettings.php`,
               JSON.stringify({ 
                 T:querytype,
                 StID:stid,

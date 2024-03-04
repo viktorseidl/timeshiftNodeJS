@@ -70,6 +70,7 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *        -TERMINAL
   *           -> controller/route/terminals/:typ/:stid/:ctoken
   *        -SETTINGS
+  *           -> controller/route/einstellungen/:typ/:stid/:ctoken
   *      - PROFILE: 
   *        -PROFILE -- TODO
   *        -PROFILE PERSONALAKTE -- TODO
