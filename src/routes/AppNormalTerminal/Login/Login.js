@@ -23,7 +23,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
     const connectorTokenft = req.params.ctoken;
     if(lib.checkConnectionHeader(connectorTokenft)==true){
-      const EncData = req.body;       
+      const EncData = req.body;        
       try{
               const querytype = req.params.typ; 
               const connectorToken=lib.getConnectionHeader();
