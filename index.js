@@ -46,6 +46,7 @@ const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
+const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
  /*--------------------------------------------------------------------------------
   * WEB-PANEL ROUTES
   * /api/v1/ 
@@ -60,6 +61,8 @@ const Widgets= require('./src/routes/DashboardRoutes/Widgets');
   *           -> dashboard/track/timetouch/:typ/:ctoken
   *      - ADMIN VERWALTUNG: 
   *        -STANDORTE
+  *           -> controller/route/standort/:typ/:ctoken
+  *           -> controller/route/standort/:typ/:stid/:ctoken
   *        -ABTEILUNGEN
   *        -BEREICHE
   *        -GRUPPEN
@@ -101,6 +104,7 @@ app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
 app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
 app.use('/api/v1/', Widgets); //---------------------------------------------->DASHBOARD
+app.use('/api/v1/controller', AdminRouter); //---------------------------------------------->DASHBOARD
 /**-----------------------------------------------------------------------------------------------------------
  * 
  *  END---WEB-PANEL ROUTES
