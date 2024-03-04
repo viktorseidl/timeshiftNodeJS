@@ -32,6 +32,10 @@ const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
+const Encryption=require('./src/routes/Encryption/EncryptionRouter'); 
+
+
+const UnitActivation= require('./src/routes/UnitActivation/UnitActivation');
 const Profile= require('./src/routes/ProfileRoutes/ProfileRouter');
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
 const Login= require('./src/routes/WebLogin/LoginRouter');
@@ -74,6 +78,16 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *        -UNIT LOGIN 
   *           -> weblogin/route/unit/login/:uapi/:ltoken/:ctoken
   *           -> weblogin/route/unit/cryptlh/:ctoken 
+  *      - UNIT ACTIVATION: 
+  *        -ACTIVATE 
+  *           -> start/route/activation/:token/:typ/:ctoken 
+  *      - ENCRYPTION: 
+  *        -JWTCHECK 
+  *           -> keygen/route/check/:handshake/:token/:ctoken 
+  *        -JWTCREATE 
+  *           -> keygen/route/create/:token/:ctoken
+  *        -RSA SHARED KEY 
+  *           -> keygen/route/shared/:token/:ctoken 
   *      - ZEITERFASSUNG: -- TODO
   *      - URLAUBPLANNER: -- TODO
   *      - TICKETING: -- TODO
@@ -84,8 +98,10 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
  * ROUTE HANDLING
  *---------------------------------------------------------------------------------*/
 app.use('/api/v1/encrypt', EncryptionContext);
+app.use('/api/v1/keygen', Encryption);
 app.use('/api/v1/signup', SignupNewUnit);
 app.use('/api/v1/activate', ActivateUnit);  
+app.use('/api/v1/start', UnitActivation);  
 app.use('/teampage', TeamPageRoutes); 
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);    
 app.use('/api/v1/weblogin', Login); //-------------------------------------------> WEBLOGIN
