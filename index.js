@@ -27,10 +27,8 @@ app.use(function(req,res,next){
  /*
  * IMPORTS
  *-----------------------------------------------------------------------------*/  
-const TeamPageRoutes=require('./src/routes/TeamPage'); 
-const ProfileHeadRoutes=require('./src/routes/ProfileHead'); 
+const TeamPageRoutes=require('./src/routes/TeamPage');   
 const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen'); 
-const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
@@ -71,6 +69,7 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *        -SETTINGS
   *           -> controller/route/einstellungen/:typ/:stid/:ctoken
   *      - PROFILE: 
+  *           -> profile/route/header/:typ/:ctoken
   *        -PROFILE -- TODO
   *        -PROFILE PERSONALAKTE -- TODO
   *        -PROFILE MESSAGES -- TODO
@@ -89,9 +88,7 @@ app.use('/api/v1/signup', SignupNewUnit);
 app.use('/api/v1/activate', ActivateUnit); 
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);    
 app.use('/teampage', TeamPageRoutes); 
-app.use('/api/v1/web/terminal', UTerminalScreenRoutes); 
-app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);  
-app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE 
+app.use('/api/v1/web/terminal', UTerminalScreenRoutes);    
 app.use('/api/v1/dashboard', Widgets); //-------------------------------------> DASHBOARD
 app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
 app.use('/api/v1/controller', AdminRouter); //--------------------------------> ADMIN
