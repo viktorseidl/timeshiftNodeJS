@@ -44,27 +44,39 @@ const TimetrackingRoutes=require('./src/routes/MitarbeiterTimeTracking');
 const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
-const EncryptionContext=require('./src/routes/EncryptionContext');
-/**
- * IMPORT DASHBOARD ROUTES 
- */
+const EncryptionContext=require('./src/routes/EncryptionContext'); 
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
  /*--------------------------------------------------------------------------------
-  * APP NORMAL TERMINAL ROUTES
-  * /api/v1/app/
+  * WEB-PANEL ROUTES
+  * /api/v1/ 
   *    SUBROUTES
-  *      - NORMAL TERMINAL:
-  *        -> normal/terminal/
-  *            SUBROUTES
-  *              - LOGIN
-  *              -> login/:typ/:ctoken
-  *              - LOGIN FORMS
-  *                -PIN
-  *                  -> pin/:typ/:ctoken
-  *                  -> nfc/:typ/:ctoken
-  *                  -> bluethoot/:typ/:ctoken
-  *                  -> qrcode/:typ/:ctoken
-  *                  -> credentials/:typ/:ctoken
+  *      - DASHBOARD: 
+  *        -WIDGETS
+  *           -> dashboard/urlaub/widget/:typ/:ctoken
+  *           -> dashboard/krank/widget/:typ/:ctoken
+  *           -> dashboard/tage/widget/:typ/:ctoken
+  *           -> dashboard/zeitkonto/widget/:typ/:ctoken -- TODO
+  *        -TIMETRACKING
+  *           -> dashboard/track/timetouch/:typ/:ctoken
+  *      - ADMIN VERWALTUNG: 
+  *        -STANDORTE
+  *        -ABTEILUNGEN
+  *        -BEREICHE
+  *        -GRUPPEN
+  *        -TEAMS
+  *        -MITARBEITER
+  *        -VETRÄGE
+  *        -TERMINAL
+  *      - PROFILE: 
+  *        -PROFILE -- TODO
+  *        -PROFILE PERSONALAKTE -- TODO
+  *        -PROFILE MESSAGES -- TODO
+  *      - ZEITERFASSUNG: -- TODO
+  *      - URLAUBPLANNER: -- TODO
+  *      - TICKETING: -- TODO
+  *      - WIKI: -- TODO
+  *      - SETTINGS: -- TODO
+  *            
  *---------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------
  * ROUTE HANDLING
@@ -85,13 +97,10 @@ app.use('/api/v1/ucontrol/apanel/vertrag', AdminVertragRoutes);
 app.use('/api/v1/ucontrol/apanel/mitarbeiter', AdminMitarbeiterRoutes);
 app.use('/api/v1/ucontrol/dashboard', UDashboardRoutes);
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes); 
-app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);
-app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
-app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes);
-/**
- * DASHBOARD ROUTES
- */
-app.use('/api/v1/dashboard', Widgets);
+app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);  
+app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
+app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
+app.use('/api/v1/', Widgets); //---------------------------------------------->DASHBOARD
 /**-----------------------------------------------------------------------------------------------------------
  * 
  *  END---WEB-PANEL ROUTES

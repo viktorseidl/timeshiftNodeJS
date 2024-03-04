@@ -16,10 +16,10 @@ const KrankContainerWidget=require('./WidgetRoutes/KrankContainerWidget');
 const TageContainerWidget=require('./WidgetRoutes/TageContainerWidget');
 const MitarbeiterWidget=require('./WidgetRoutes/MitarbeiterWidget');
 const TimeTouch=require('./TimeTrackingRoutes/TimeTracking');
-router.use('/urlaub', UrlaubContainerWidget);  
-router.use('/krank', KrankContainerWidget);  
-router.use('/tage', TageContainerWidget);  
-router.use('/mitarbeiter', MitarbeiterWidget);   
-router.use('/track', TimeTouch);  
+router.use('/dashboard/urlaub', UrlaubContainerWidget);  
+router.use('/dashboard/krank', KrankContainerWidget);  
+router.use('/dashboard/tage', TageContainerWidget);  
+router.use('/dashboard/mitarbeiter', MitarbeiterWidget);   
+router.use('/dashboard/track', TimeTouch);  
   
 module.exports = router;
