@@ -35,6 +35,7 @@ const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
+const Profile= require('./src/routes/ProfileRoutes/ProfileRouter');
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
 const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
  /*--------------------------------------------------------------------------------
@@ -90,9 +91,9 @@ app.use('/api/v1/ulogincontroller', UnitPanelLogin);
 app.use('/teampage', TeamPageRoutes); 
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes); 
 app.use('/api/v1/ucontrol/timetracking', TimetrackingRoutes);  
-app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
-app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE
-app.use('/api/v1/', Widgets); //----------------------------------------------> DASHBOARD
+app.use('/api/v1/ucontrol/profile', ProfileHeadRoutes); //-------------------->PROFILE 
+app.use('/api/v1/dashboard', Widgets); //-------------------------------------> DASHBOARD
+app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
 app.use('/api/v1/controller', AdminRouter); //--------------------------------> ADMIN
 /**-----------------------------------------------------------------------------------------------------------
  * 
