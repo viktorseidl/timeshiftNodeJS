@@ -35,6 +35,7 @@ const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
 const Profile= require('./src/routes/ProfileRoutes/ProfileRouter');
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
+const Login= require('./src/routes/WebLogin/LoginRouter');
 const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
  /*--------------------------------------------------------------------------------
   * WEB-PANEL ROUTES
@@ -70,6 +71,10 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
   *           -> controller/route/einstellungen/:typ/:stid/:ctoken
   *      - PROFILE: 
   *           -> profile/route/header/:typ/:ctoken
+  *      - WEBLOGIN: 
+  *        -UNIT LOGIN 
+  *           -> login/route/unit/login/:uapi/:ltoken/:ctoken
+  *           -> login/route/unit/cryptlh/:ctoken
   *        -PROFILE -- TODO
   *        -PROFILE PERSONALAKTE -- TODO
   *        -PROFILE MESSAGES -- TODO
@@ -89,6 +94,7 @@ app.use('/api/v1/activate', ActivateUnit);
 app.use('/api/v1/ulogincontroller', UnitPanelLogin);    
 app.use('/teampage', TeamPageRoutes); 
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);    
+app.use('/api/v1/login', Login); //-------------------------------------> DASHBOARD
 app.use('/api/v1/dashboard', Widgets); //-------------------------------------> DASHBOARD
 app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
 app.use('/api/v1/controller', AdminRouter); //--------------------------------> ADMIN
