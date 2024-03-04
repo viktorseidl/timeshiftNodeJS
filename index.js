@@ -27,8 +27,7 @@ app.use(function(req,res,next){
  /*
  * IMPORTS
  *-----------------------------------------------------------------------------*/  
-const AdminVertragRoutes=require('./src/routes/AdminVertrag');
-const AdminTeamRoutes=require('./src/routes/AdminTeam');
+const AdminVertragRoutes=require('./src/routes/AdminVertrag'); 
 const AdminSettingsRoutes=require('./src/routes/AdminSettings');
 const TeamPageRoutes=require('./src/routes/TeamPage');
 const AdminTerminalRoutes=require('./src/routes/AdminTerminal'); 
@@ -87,8 +86,7 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
 app.use('/api/v1/encrypt', EncryptionContext);
 app.use('/api/v1/signup', SignupNewUnit);
 app.use('/api/v1/activate', ActivateUnit); 
-app.use('/api/v1/ulogincontroller', UnitPanelLogin);  
-app.use('/api/v1/ucontrol/apanel/team', AdminTeamRoutes);
+app.use('/api/v1/ulogincontroller', UnitPanelLogin);   
 app.use('/api/v1/ucontrol/apanel/setting', AdminSettingsRoutes);
 app.use('/teampage', TeamPageRoutes);
 app.use('/api/v1/ucontrol/apanel/terminal', AdminTerminalRoutes); 
