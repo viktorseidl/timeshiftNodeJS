@@ -15,10 +15,12 @@ router.use(function(req,res,next){
  */
 const Standorte=require('./Standorte/Standorte');     
 const Abteilungen=require('./Abteilungen/Abteilung');     
+const Bereiche=require('./Bereiche/Bereiche');     
 /**
  * SUB-ROUTING
  */
 router.use('/route/standort', Standorte);  
 router.use('/route/abteilung', Abteilungen);  
+router.use('/route/bereiche', Bereiche);  
   
 module.exports = router;
