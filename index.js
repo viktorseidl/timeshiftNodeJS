@@ -26,11 +26,16 @@ const UnitPanelLogin=require('./src/routes/UnitPanelLogin');
 const ActivateUnit=require('./src/routes/ActivateUnit');
 const SignupNewUnit=require('./src/routes/SignupNewUnit');
 const EncryptionContext=require('./src/routes/EncryptionContext'); 
-const AppNormalTerminalRoutes=require('./src/routes/AppNormalTerminal/AppNormalTerminalRoutes'); 
+
 /**
  * IMPORT DASHBOARD ROUTES 
  */
 const Widgets= require('./src/routes/DashboardRoutes/Widgets');
+
+/**
+ * IMPORT APP TERMINAL ROUTES
+ */
+const AppNormalTerminalRoutes=require('./src/routes/AppNormalTerminal/AppNormalTerminalRoutes'); 
 /**
  * USE REDIRECT
  */
