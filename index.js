@@ -1,8 +1,7 @@
 const express = require('express'); 
 const cors = require('cors');
 const app = express();
-const lib = require('./src/Utils/connectorHeader');
-const Domaine=lib.getDomain();
+const lib = require('./src/Utils/connectorHeader'); 
 const PORT = 3000;
 app.use(cors()) 
 /**
@@ -14,6 +13,8 @@ app.use(function(req,res,next){
   res.header('Access-Control-Allow-Methods', 'POST, HEAD, GET, OPTIONS');
   next();
 });  
+
+
 /**-----------------------------------------------------------------------------------------------------------
  * //////////////////////////////////////////////////////////////////////////////////////////////////////////
  *  START   WEB-PANEL ROUTES
@@ -42,6 +43,8 @@ app.use('/api/v1/dashboard', Widgets); //-------------------------------------> 
 app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
 app.use('/api/v1/controller', AdminRouter); //--------------------------------> ADMIN  
 
+
+
 /**-----------------------------------------------------------------------------------------------------------
  * //////////////////////////////////////////////////////////////////////////////////////////////////////////
  *  START   ANDROID/IOS APP ROUTES
@@ -54,6 +57,8 @@ const AppNormalTerminalRoutes=require('./src/routes/AppNormalTerminal/AppNormalT
  * ROUTES */
 app.use('/api/v1/app', AppNormalTerminalRoutes);
  
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT+5}`);   
 });
