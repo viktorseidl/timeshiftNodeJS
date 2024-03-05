@@ -16,8 +16,8 @@ router.use(bodyParser.json({limit: 2500000}))
 router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
 
   /**
-   * @Route /api/v1/Mitarbeiter/QueryTyp
-   * DASHBOARD MITARBEITER
+   * @Route /api/v1/app/normal/terminal/pin/:typ:ctoken
+   * PIN LOGIN MITARBEITER
    */
   router.post('/pin/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
@@ -33,7 +33,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ucontroller/UAppTerminalInstallation.php`,
+              `${Domaine}/backend/API/ucontroller/appTerminal/Loginforms/UPin.php`,
               JSON.stringify({ 
                 T:querytype,  
                 E:EncData.E,
