@@ -17,7 +17,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
 
   /**
    * @Route /api/v1/app/normal/terminal/pin/:typ:ctoken
-   * PIN LOGIN MITARBEITER
+   * PIN LOGIN DASHBOARD
    */
   router.post('/pin/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
