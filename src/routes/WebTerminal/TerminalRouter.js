@@ -8,12 +8,10 @@ router.use(function(req,res,next){
 /**
  * IMPORT SUB-ROUTES
  */
-const Terminal=require('./Terminal/Terminal');           
-const RootPass=require('./RootPass/ActivateRootPass');           
+const Terminal=require('./Terminal/Terminal');                      
 /**
  * SUB-ROUTING
  */     
-router.use('/route/terminal', Terminal);     
-//router.use('/route/verify', RootPass);     
+router.use('/route/terminal', Terminal);       
   
 module.exports = router;
