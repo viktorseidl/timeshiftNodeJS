@@ -33,7 +33,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
               })            
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/ActivateRootPass.php`,
+              `${Domaine}/backend/API/unitactivation/ActivateRootPass.php`,
               JSON.stringify({ 
                 AToken: activateHash, 
                 T:T,
