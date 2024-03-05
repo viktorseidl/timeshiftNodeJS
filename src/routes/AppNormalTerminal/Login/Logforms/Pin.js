@@ -17,7 +17,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
 
   /**
    * @Route /api/v1/app/normal/terminal/pin/:typ:ctoken
-   * PIN LOGIN MITARBEITER
+   * PIN LOGIN DASHBOARD
    */
   router.post('/pin/:typ/:ctoken', async (req,res)=>{
     //CHECK IF CONNECTION ALLOWED ELSE RETURN 500
@@ -50,7 +50,7 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               res.status(500).json({error:'Internal Server Error'});
             }
         }catch(error){
-            res.status(500).json({error:error});
+            res.status(500).json({error:'Internal Server Error'});
         }
     }else{
         res.status(500).json({error:'Internal Server Error'});
