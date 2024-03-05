@@ -23,7 +23,7 @@ app.use(function(req,res,next){
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////
  * IMPORTS */  
 const TeamPageRoutes=require('./src/routes/TeamPage');   
-const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen'); 
+const UTerminalScreenRoutes=require('./src/routes/WebTerminal/TerminalRouter'); 
 const SignupNewUnit=require('./src/routes/SignupNewUnit'); 
 const Encryption=require('./src/routes/Encryption/EncryptionRouter');  
 const UnitActivation= require('./src/routes/UnitActivation/UnitActivationRouter');
