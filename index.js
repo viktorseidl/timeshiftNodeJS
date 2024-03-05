@@ -37,7 +37,7 @@ app.use('/api/v1/keygen', Encryption);
 app.use('/api/v1/signup', SignupNewUnit);  
 app.use('/api/v1/start', UnitActivation);  
 app.use('/teampage', TeamPageRoutes); 
-app.use('/api/v1/web/terminal', UTerminalScreenRoutes);    
+app.use('/api/v1/web', UTerminalScreenRoutes);    
 app.use('/api/v1/weblogin', Login); //-------------------------------------------> WEBLOGIN
 app.use('/api/v1/dashboard', Widgets); //-------------------------------------> DASHBOARD
 app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
