@@ -22,8 +22,8 @@ app.use(function(req,res,next){
  ------------------------------------------------------------------------------------------------------------*/
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////
  * IMPORTS */  
-const TeamPageRoutes=require('./src/routes/TeamPage');   
-const UTerminalScreenRoutes=require('./src/routes/WebTerminal/TerminalRouter'); 
+const TeamPageRoutes=require('./src/routes/TeamPage');     
+const WebTerminal=require('./src/routes/WebTerminal/TerminalRouter'); 
 const SignupNewUnit=require('./src/routes/SignupNewUnit'); 
 const Encryption=require('./src/routes/Encryption/EncryptionRouter');  
 const UnitActivation= require('./src/routes/UnitActivation/UnitActivationRouter');
@@ -37,7 +37,7 @@ app.use('/api/v1/keygen', Encryption);
 app.use('/api/v1/signup', SignupNewUnit);  
 app.use('/api/v1/start', UnitActivation);  
 app.use('/teampage', TeamPageRoutes); 
-app.use('/api/v1/web', UTerminalScreenRoutes);    
+app.use('/api/v1/web', WebTerminal);    
 app.use('/api/v1/weblogin', Login); //-------------------------------------------> WEBLOGIN
 app.use('/api/v1/dashboard', Widgets); //-------------------------------------> DASHBOARD
 app.use('/api/v1/profile', Profile); //---------------------------------------> PROFILE
