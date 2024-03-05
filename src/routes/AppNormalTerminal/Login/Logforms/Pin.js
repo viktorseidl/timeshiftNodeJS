@@ -50,10 +50,10 @@ router.use(bodyParser.urlencoded({limit: 2500000, extended: false}))
               res.status(500).json({error:'Internal Server Error'});
             }
         }catch(error){
-            res.status(500).json({error:'Internal Server Error.'});
+            res.status(500).json({error:error});
         }
     }else{
-        res.status(500).json({error:'Internal Server Error!'});
+        res.status(500).json({error:'Internal Server Error'});
     }
      
   });
