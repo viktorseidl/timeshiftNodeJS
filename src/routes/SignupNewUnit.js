@@ -32,7 +32,7 @@ router.post('/:ctoken', async (req,res)=>{
               }
             };
             const response = await axios.post(
-              `${Domaine}/backend/API/unitactivation/CreateUnit.php`,
+              `${Domaine}/backend/API/signup/CreateUnit.php`,
               JSON.stringify({ 
                 URD: EncData.URD, 
                 XFRC: connectorToken }),
