@@ -28,10 +28,8 @@ app.use(function(req,res,next){
  * IMPORTS
  *-----------------------------------------------------------------------------*/  
 const TeamPageRoutes=require('./src/routes/TeamPage');   
-const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen');  
-const ActivateUnit=require('./src/routes/ActivateUnit');
-const SignupNewUnit=require('./src/routes/SignupNewUnit');
-const EncryptionContext=require('./src/routes/EncryptionContext'); 
+const UTerminalScreenRoutes=require('./src/routes/UTerminalScreen'); 
+const SignupNewUnit=require('./src/routes/SignupNewUnit'); 
 const Encryption=require('./src/routes/Encryption/EncryptionRouter'); 
 
 
