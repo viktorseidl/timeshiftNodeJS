@@ -97,11 +97,9 @@ const AdminRouter= require('./src/routes/AdminPanel/AdminRouter');
  *---------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------
  * ROUTE HANDLING
- *---------------------------------------------------------------------------------*/
-app.use('/api/v1/encrypt', EncryptionContext);
+ *---------------------------------------------------------------------------------*/ 
 app.use('/api/v1/keygen', Encryption);
-app.use('/api/v1/signup', SignupNewUnit);
-app.use('/api/v1/activate', ActivateUnit);  
+app.use('/api/v1/signup', SignupNewUnit);  
 app.use('/api/v1/start', UnitActivation);  
 app.use('/teampage', TeamPageRoutes); 
 app.use('/api/v1/web/terminal', UTerminalScreenRoutes);    
