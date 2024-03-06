@@ -12,9 +12,11 @@ router.use(function(req,res,next){
 }); 
 
 const Terminal=require('./Terminal/Terminal');                      
+const Timetracking=require('./TimeTracking/Timetracking');                      
 /**
  * SUB-ROUTING
  */     
 router.use('/route/terminal', Terminal);       
+router.use('/route/time', Timetracking);       
   
 module.exports = router;
