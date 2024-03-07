@@ -18,5 +18,6 @@ const Timetracking=require('./TimeTracking/Timetracking');
  */     
 router.use('/route/terminal', Terminal);       
 router.use('/route/time', Timetracking);       
+//router.use('/route/loginhandler', Timetracking);       
   
 module.exports = router;
