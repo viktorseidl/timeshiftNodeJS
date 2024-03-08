@@ -26,6 +26,12 @@ const Login=require('./Login/Login');
 router.use('/normal/terminal', Login);  
 //router.use('extended/terminal', Login);  
 
+const Track=require('./TimeTracking/TimeTracking'); 
+/**
+ * TimeTracking ROUTE normal/terminal/track/:typ/:ctoken
+ * 
+ */
+router.use('/normal/terminal', Track);  
 
 
 /**
